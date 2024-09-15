@@ -1,8 +1,8 @@
 from django.db import models
 from django.urls import reverse
 # Create your models here.
-class category(models.Model):
-    name = models.CharField(max_lenght=250)
+class Category(models.Model):
+    name = models.CharField(max_length=250)
     slug = models.SlugField(unique = True)
 
     class Meta:
@@ -12,15 +12,15 @@ class category(models.Model):
         return self.name
 
 class product(models.Model):
-    category = models.ForeignKey(category,related_name='product', on_delete=models.CASCADE)
-    name = models.CharField(max_lenght=250)
-    slug = models.SlugField(max_lenght=250)
+    category = models.ForeignKey(Category,related_name='product', on_delete=models.CASCADE)
+    name = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250)
     description = models.TextField(blank=True)
-    price = models.DecimalField(max_degits=5,min_degits=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add = True)
     updated = models.DateTimeField(auto_now = True)
-    image = models.ImageField(upload='product',blank=True, null=True)
+    image = models.ImageField(upload_to='product',blank=True, null=True)
 
     def __str__(self) -> str:
         return self.name
