@@ -553,3 +553,20 @@ video {
   --tw-contain-paint:  ;
   --tw-contain-style:  ;
 }
+
+.static {
+  position: static;
+}
+
+.block {
+  display: block;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
