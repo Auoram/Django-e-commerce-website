@@ -9,7 +9,17 @@
   {% load static %}
   <link href="{% static 'dist/styles.css' %}" rel="stylesheet"/>
 </head>
-<body>
-  {%block content%}{%endblock%}
+<body class="bg-slate-50 text-gray-600 flex flex-col min-h-screen">
+  <header class="shadow-md">
+    {% include "includes/navbar.html" %}
+  </header>
+  <main class="container mx-auto p-8 flex-grow">
+    {%block content%}{%endblock%}
+  </main>
+  <footer class="shadow-md">
+    <div class="container mx-auto p-5 text-center">
+      <p>@2024 EShop inc. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>

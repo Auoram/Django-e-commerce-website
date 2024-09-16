@@ -1,3 +1,209 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Inter;
+  }
+  
+  @layer utilities {
+    .btn_white { 
+      @apply  border-white  px-8 py-3 text-white hover:bg-blue-20
+    }
+    .btn_white_text  { 
+      @apply  border-white  px-8 py-3 text-white hover:bg-slate-500
+    }
+    .btn_gray  { 
+      @apply  text-grey-40 border-none hover:underline
+    }
+    .btn_dark_blue_shadow  { 
+      @apply bg-blue-40 rounded-full border-blue-40 shadow-lg shadow-blue-40 w-44 px-8 py-4 text-white transition-all hover:bg-blue-15 hover:bg-opacity-35 hover:text-blue-40
+    }
+    .btn_no_background  { 
+      @apply  text-white border-none hover:text-blue-20
+    }
+    .btn_dark_blue { 
+      @apply  bg-blue-110 px-8 py-4 text-white border-white transition-all hover:bg-blue-10 hover:text-blue-30
+    }
+    .btn_light_blue { 
+      @apply  bg-white px-8 py-4 text-blue-40 border-blue-40 w-48 transition-all hover:bg-blue-10
+    }
+    .btn_red { 
+      @apply  bg-white px-8 py-4 text-red-600 border-red-600 w-48 transition-all hover:bg-red-300
+    }
+    .btn_blue { 
+      @apply  bg-blue-40 rounded-full w-44 px-8 py-4 text-white transition-all hover:bg-green-10 hover:text-blue-40
+    }
+    .btn_dark_green { 
+      @apply  bg-green-70 rounded-full w-44 px-8 py-4 text-white transition-all hover:bg-green-5 hover:bg-opacity-35 hover:text-green-70
+    }
+    .btn_dark_green_shadow  { 
+      @apply bg-green-70 rounded-full border-green-70 shadow-lg shadow-green-30 w-44 px-8 py-4 text-white transition-all hover:bg-green-5 hover:bg-opacity-35 hover:text-green-70
+    }
+    
+    .max-container {
+      @apply mx-auto max-w-[1440px];
+    }
+  
+    .bg-opacity-custom {
+      @apply bg-bg bg-cover bg-center bg-opacity-45;
+    }
+  
+    .padding-container {
+      @apply px-6 lg:px-20 3xl:px-0;
+    }
+  
+    .flexCenter {
+      @apply flex items-center justify-center;
+    }
+  
+    .flexBetween {
+      @apply flex items-center justify-between;
+    }
+  
+    .flexStart {
+      @apply flex items-center justify-start;
+    }
+  
+    .flexEnd {
+      @apply flex items-center justify-end;
+    }
+  
+    .regular-64 {
+      @apply text-[64px] font-[400] leading-[120%];
+    }
+    .regular-46 {
+      @apply text-[46px] font-[400] leading-[120%];
+    }
+  
+    .regular-40 {
+      @apply text-[40px] font-[400] leading-[120%];
+    }
+  
+    .regular-36 {
+      @apply text-[36px] font-[400];
+    }
+  
+    .regular-32 {
+      @apply text-[32px] font-[400];
+    }
+  
+    .regular-30 {
+      @apply text-[30px] font-[400];
+    }
+  
+    .regular-26 {
+      @apply text-[26px] font-[400];
+    }
+  
+    .regular-24 {
+      @apply text-[24px] font-[400];
+    }
+  
+    .regular-20 {
+      @apply text-[20px] font-[400];
+    }
+  
+    .regular-18 {
+      @apply text-[18px] font-[400];
+    }
+  
+    .regular-16 {
+      @apply text-[16px] font-[400];
+    }
+  
+    .regular-14 {
+      @apply text-[14px] font-[400];
+    }
+  
+    .medium-14 {
+      @apply text-[14px] font-[600];
+    }
+  
+    .bold-88 {
+      @apply text-[88px] font-[700] leading-[120%];
+    }
+  
+    .bold-66 {
+      @apply text-[66px] font-[700] leading-[120%];
+    }
+  
+    .bold-64 {
+      @apply text-[64px] font-[700] leading-[120%];
+    }
+  
+    .bold-52 {
+      @apply text-[52px] font-[700] leading-[120%];
+    }
+  
+    .bold-46 {
+      @apply text-[46px] font-[700] leading-[120%];
+    }
+  
+    .bold-44 {
+      @apply text-[44px] font-[700] leading-[120%];
+    }
+  
+    .bold-42 {
+      @apply text-[42px] font-[700] leading-[120%];
+    }
+  
+    .bold-40 {
+      @apply text-[40px] font-[700] leading-[120%];
+    }
+  
+    .bold-34 {
+      @apply text-[34px] font-[700] leading-[120%];
+    }
+  
+    .bold-32 {
+      @apply text-[32px] font-[700] leading-[120%];
+    }
+  
+    .bold-24 {
+      @apply text-[24px] font-[700];
+    }
+  
+    .bold-20 {
+      @apply text-[20px] font-[700];
+    }
+  
+    .bold-18 {
+      @apply text-[18px] font-[700];
+    }
+  
+    .bold-16 {
+      @apply text-[16px] font-[700];
+    }
+  
+    .bold-14 {
+      @apply text-[14px] font-[700];
+    }
+  
+    .camp-quote {
+      @apply absolute -right-6 bottom-4 w-[140px] lg:bottom-10 xl:-right-8 xl:w-[186px] 3xl:right-0;
+    }
+  
+    .feature-phone {
+      @apply absolute top-[13%] z-10 hidden max-w-[1500px] rotate-[15deg] md:-left-16 lg:flex  3xl:left-20;
+    }
+  
+    .get-app {
+      @apply max-container relative flex w-full  flex-col justify-between gap-32 overflow-hidden bg-green-90 bg-pattern bg-cover bg-center bg-no-repeat px-6 py-12 text-white sm:flex-row sm:gap-12 sm:py-24 lg:px-20 xl:max-h-[598px] 2xl:rounded-5xl;
+    }
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
