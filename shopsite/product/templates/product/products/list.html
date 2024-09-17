@@ -4,7 +4,7 @@
 
 {%block content%}
 <div class="container mx-auto p-4 flex">
-    <aside>
+    <aside class="w-1/4 p-4">
         <h2 class="font-bold text-xl">Categories :</h2>
         <ul>
             {% for category in categories %}
@@ -14,5 +14,27 @@
             {% endfor %}
         </ul>
     </aside>
+    <main class="w-3/4 p-4">
+        {% if category%}
+        <h2 class="font-bold mb-4">{{category.name}}</h2>
+        {% else %}
+        <h2 class="font-bold mb-4">All Products :</h2>
+        {% endif %}
+        <div class="grid grid-cols-3 gap-4">
+            {% for product in product %}
+            <a href="{% url 'product:product_detail' product.id product.slug %}"/>
+            <div>
+                {% if product.image %}
+                <img src="{{product.image.url}}" alt="{{product.name}}">
+                {% else %}
+                <p class="text-red-600 font-semibold">The image is not available !</p>
+                {% endif %}
+                <h3 class="text-lg font-semibold">{{product.name}}</h3>
+                <p class="">{{product.description}}</p>
+                <p class="text-xl font-bold">{{product.price}} MAD</p>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
 </div>
 {%endblock%}
