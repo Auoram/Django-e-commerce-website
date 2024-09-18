@@ -6,18 +6,16 @@ from django.http import JsonResponse
 # Create your views here.
 
 @require_POST
-def cart_add(request,product_id):
+def cart_add(request, product_id):
     cart_id = request.session.get('cart_id')
 
-    if(cart_id):
-        try:
-            cart= Cart.objects.get(id=cart_id)
-        except Cart.DoesNotExist:
-            cart = Cart.objects.create()
-            request.session['cart_id'] = cart.id
+    if cart_id:
+        cart = Cart.objects.get(id=cart_id)
     else:
         cart = Cart.objects.create()
-        request.session['cart_id'] = cart_id
+        print("Cart created:", cart.id)
+        request.session['cart_id'] = cart.id
+        print("Cart ID set in session:", request.session['cart_id'])
     
     Product = get_object_or_404(product,id=product_id)
 
@@ -37,9 +35,19 @@ def cart_add(request,product_id):
 
 def cart_detail(request):
     cart_id = request.session.get('cart_id')
-    cart=None
+    print("Cart ID:", cart_id)
 
-    if(cart_id):
-        cart = get_object_or_404(Cart,id=23)
+    if cart_id is None:
+        print("Cart ID is not set in the session")
 
-    return render(request, 'cart/detail.html', {"cart":cart})
+    cart = None
+
+    if cart_id:
+        try:
+            cart = Cart.objects.get(id=cart_id)
+            print("Cart:", cart)
+        except Cart.DoesNotExist:
+            cart = None
+            print("Cart does not exist")
+
+    return render(request, 'cart/detail.html', {"cart": cart})

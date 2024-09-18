@@ -3,17 +3,42 @@
 {% block title %}My Cart{% endblock %}
 
 {% block content %}
-<h2>My Cart:</h2>
-{%if cart %}
-    <ul>
-            <li>
-                <p>Item Object: {{ cart.product.name }}</p>
-                <p>Product Object: {{ item.product.price}}</p>
-                <p>Product Name: {{ item.product.name }}</p>
-                <p>Product Image URL: {% if item.product.image %}{{ item.product.image.url }}{% else %}No image{% endif %}</p>
-            </li>
-    </ul>
-{%else%}
-<p>No cart found</p>
-{% endif %}
+  <h2 class="text-2xl font-bold mb-4">My Cart:</h2>
+  {% if cart %}
+    <table class="table-auto w-full mb-4">
+      <thead>
+        <tr class="bg-gray-200 border bottom-2">
+          <th class="px-4 py-2">Product</th>
+          <th class="px-4 py-2">Quantity</th>
+          <th class="px-4 py-2">Price</th>
+          <th class="px-4 py-2">Total</th>
+          <th class="px-4 py-2">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart.items.all %}
+          <tr class="hover:bg-gray-100  border bottom-2">
+            <td class="px-4 py-2"><a href="{% url 'product:product_detail' item.product.id item.product.slug %}">{{ item.product.name }}</a></td>
+            <td class="px-4 py-2">{{ item.quantity }}</td>
+            <td class="px-4 py-2">{{ item.product.price }}</td>
+            <td class="px-4 py-2">{{ item.get_total_price }}</td>
+            <td class="px-4 py-2">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="bg-red-600 text-white px-4 py-1 rounded">Delete</button>
+                </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr class="bg-gray-200  border bottom-2">
+          <td colspan="3" class="px-4 py-2">Total:</td>
+          <td class="px-4 py-2">{{ cart.get_total_price }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  {% else %}
+    <p class="text-gray-600">Your cart is empty.</p>
+  {% endif %}
 {% endblock %}
