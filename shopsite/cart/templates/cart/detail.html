@@ -1,21 +1,19 @@
 {% extends "base.html" %}
 
-{%block title%}My Cart{%endblock%} 
+{% block title %}My Cart{% endblock %}
 
-{%block content%}
-<h2>My Cart :</h2>
-{% if Item %}
-<ul>
-    {% for item in cart.items.all %}
-    <li>
-        {% if item.Product.image%}
-        <img src="{{item.Product.image.url}}" alt="{{item.Product.name}}">
-        {% endif %}
-        {{item.Product.name}}
-    </li>
-    {% endfor%}
-</ul>
-{% else %}
-<p>Cart is empty !</p>
+{% block content %}
+<h2>My Cart:</h2>
+{%if cart %}
+    <ul>
+            <li>
+                <p>Item Object: {{ cart.product.name }}</p>
+                <p>Product Object: {{ item.product.price}}</p>
+                <p>Product Name: {{ item.product.name }}</p>
+                <p>Product Image URL: {% if item.product.image %}{{ item.product.image.url }}{% else %}No image{% endif %}</p>
+            </li>
+    </ul>
+{%else%}
+<p>No cart found</p>
 {% endif %}
-{%endblock%}
+{% endblock %}

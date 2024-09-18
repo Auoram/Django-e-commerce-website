@@ -21,7 +21,7 @@ def cart_add(request,product_id):
     
     Product = get_object_or_404(product,id=product_id)
 
-    cart_item, created = Item.objects.get_or_create(cart=cart, Product=Product)
+    cart_item, created = Item.objects.get_or_create(cart=cart, product=Product)
 
     if not created:
         cart_item.quantity += 1
@@ -40,6 +40,6 @@ def cart_detail(request):
     cart=None
 
     if(cart_id):
-        cart = get_object_or_404(Cart,id=cart_id)
+        cart = get_object_or_404(Cart,id=23)
 
-    return render(request, 'cart/detail.html', {'cart':cart})
+    return render(request, 'cart/detail.html', {"cart":cart})
