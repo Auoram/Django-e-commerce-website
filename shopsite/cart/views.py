@@ -14,6 +14,7 @@ def cart_add(request,product_id):
             cart= Cart.objects.get(id=cart_id)
         except Cart.DoesNotExist:
             cart = Cart.objects.create()
+            request.session['cart_id'] = cart.id
     else:
         cart = Cart.objects.create()
         request.session['cart_id'] = cart_id
@@ -29,15 +30,16 @@ def cart_add(request,product_id):
 
     response_data = {
         "success":True,
-        "message":f'added {product.name} to cart'
+        "message":f'Added {Product.name} to cart'
     }
     
     return JsonResponse(response_data)
 
 def cart_detail(request):
     cart_id = request.session.get('cart_id')
+    cart=None
 
     if(cart_id):
         cart = get_object_or_404(Cart,id=cart_id)
 
-    return render(request, 'cart/detail.html', {"cart":cart})
+    return render(request, 'cart/detail.html', {'cart':cart})
