@@ -621,6 +621,10 @@ video {
   display: grid;
 }
 
+.h-64 {
+  height: 16rem;
+}
+
 .max-h-\[80vh\] {
   max-height: 80vh;
 }
@@ -707,6 +711,11 @@ video {
 .bg-slate-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .p-4 {

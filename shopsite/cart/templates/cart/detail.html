@@ -23,7 +23,7 @@
             <td class="px-4 py-2">{{ item.product.price }}</td>
             <td class="px-4 py-2">{{ item.get_total_price }}</td>
             <td class="px-4 py-2">
-                <form action="" method="post">
+                <form action="{% url 'cart:remove_item' item.id%}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="bg-red-600 text-white px-4 py-1 rounded">Delete</button>
                 </form>
@@ -33,12 +33,15 @@
       </tbody>
       <tfoot>
         <tr class="bg-gray-200  border bottom-2">
-          <td colspan="3" class="px-4 py-2">Total:</td>
-          <td class="px-4 py-2">{{ cart.get_total_price }}</td>
+          <td colspan="4" class="px-4 py-2">Total:</td>
+          <td class="px-4 py-2">{{ cart.get_total_price }} MAD</td>
         </tr>
       </tfoot>
     </table>
   {% else %}
     <p class="text-gray-600">Your cart is empty.</p>
   {% endif %}
+  <form action="">
+    <button class="bg-emerald-600 rounded font-bold text-xl p-4 text-slate-50 transition-all hover:bg-emerald-600 hover:bg-opacity-50 hover:text-emerald-600">Proceed To Checkout</button>
+  </form>
 {% endblock %}

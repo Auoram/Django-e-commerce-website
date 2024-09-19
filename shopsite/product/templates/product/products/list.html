@@ -25,7 +25,7 @@
             <a href="{% url 'product:product_detail' product.id product.slug %}"/>
             <div>
                 {% if product.image %}
-                <img src="{{product.image.url}}" alt="{{product.name}}">
+                <img src="{{product.image.url}}" alt="{{product.name}}" class="h-64 w-44 object-cover">
                 {% else %}
                 <p class="text-red-600 font-semibold">The image is not available !</p>
                 {% endif %}
