@@ -41,7 +41,8 @@
   {% else %}
     <p class="text-gray-600">Your cart is empty.</p>
   {% endif %}
-  <form action="">
-    <button class="bg-emerald-600 rounded font-bold text-xl p-4 text-slate-50 transition-all hover:bg-emerald-600 hover:bg-opacity-50 hover:text-emerald-600">Proceed To Checkout</button>
+  <form action="{% url 'orders:order_create' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="bg-emerald-600 rounded font-bold text-xl p-4 text-slate-50 transition-all hover:bg-emerald-600 hover:bg-opacity-50 hover:text-emerald-600">Proceed To Checkout</button>
   </form>
 {% endblock %}

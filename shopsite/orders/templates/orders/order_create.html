@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Order Creation{% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+    <h2 class="text-2xl font-bold mb-6 text-center text-emerald-600">Create Order</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="space-y-4">
+            {{form.as_p}}
+        </div>
+        <button type="submit" class="bg-emerald-600 rounded font-bold text-lg p-4 text-slate-50 transition-all hover:bg-emerald-600 hover:bg-opacity-50 hover:text-emerald-600">
+            Place Order
+        </button>
+    </form>
+</div>
+
+<style>
+    form {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    form p {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    form form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    form input{
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        width: 100%;
+    }
+
+    form input:focus {
+        outline: none;
+        border-color: #52a44d;
+    }
+</style>
+{% endblock %}
