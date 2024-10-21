@@ -3,29 +3,29 @@
 {%block title%}Shopping Website{%endblock%}
 
 {%block content%}
-<div class="container mx-auto p-4 flex">
-    <aside class="w-1/4 p-4">
-        <h2 class="font-bold text-xl">Categories :</h2>
+<div class="container mx-auto p-4 flex lg:flex-row flex-col">
+    <aside class="w-full lg:w-1/4 p-4">
+        <h2 class="font-bold text-3xl mb-2">Categories :</h2>
         <ul>
             {% for category in categories %}
-            <li>
-                <a href="{% url 'product:product_list_by_category' category.slug %}">{{category.name}}</a>
+            <li class="mb-2">
+                <a href="{% url 'product:product_list_by_category' category.slug %}" class="hover:text-emerald-600 lg:hover:font-bold lg:hover:text-2xl text-xl transition duration-200">{{category.name}}</a>
             </li>
             {% endfor %}
         </ul>
     </aside>
-    <main class="w-3/4 p-4">
+    <main class="w-full lg:w-3/4 p-4">
         {% if category%}
-        <h2 class="font-bold mb-4">{{category.name}}</h2>
+        <h2 class="font-bold text-3xl mb-4">{{category.name}}</h2>
         {% else %}
-        <h2 class="font-bold mb-4">All Products :</h2>
+        <h2 class="font-bold text-3xl mb-4">All Products :</h2>
         {% endif %}
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid lg:grid-cols-3 grid-flow-col-1 md:grid-cols-2 gap-4">
             {% for product in product %}
-            <a href="{% url 'product:product_detail' product.id product.slug %}"/>
-            <div>
+            <a href="{% url 'product:product_detail' product.id product.slug %}" class="hover:scale-105 transform transition">
+            <div class="shadow-lg rounded-lg border border-black p-4 hover:bg-gray-100 transition duration-300">
                 {% if product.image %}
-                <img src="{{product.image.url}}" alt="{{product.name}}" class="h-64 w-44 object-cover">
+                <img src="{{product.image.url}}" alt="{{product.name}}" class="h-64 w-42 object-cover">
                 {% else %}
                 <p class="text-red-600 font-semibold">The image is not available !</p>
                 {% endif %}
@@ -33,6 +33,7 @@
                 <p class="">{{product.description}}</p>
                 <p class="text-xl font-bold">{{product.price}} MAD</p>
             </div>
+            </a>
             {% endfor %}
         </div>
     </main>
